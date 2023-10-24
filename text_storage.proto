@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package textstorage;
+
+service TextStorageService {
+  rpc StoreText(TextRequest) returns (google.protobuf.Empty);
+  rpc GetTimestamp(TextRequest) returns (TimestampResponse);
+  rpc QueryText(TextRequest) returns (TimestampResponse);
+}
+
+message TextRequest {
+  string text = 1;
+}
+
+message TimestampResponse {
+  int64 timestamp = 1;
+}
+
+message Empty {}
